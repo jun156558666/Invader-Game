@@ -14,6 +14,7 @@ let enemyBullets;
 let gameOver;
 let gameClear;
 
+// 敵の初期配置を作成
 function createEnemies() {
   let newEnemies = [];
   for (let row = 0; row < 3; row++) {
@@ -29,8 +30,9 @@ function createEnemies() {
   return newEnemies;
 }
 
+// ゲームの初期化
 function resetGame() {
-  player = { x: 180, y: 450, w: 40, h: 10 };
+  player = { x: canvas.width / 2 - 20, y: 450, w: 40, h: 10 };
   bullet = null;
   enemies = createEnemies();
   enemyDirection = 1;
@@ -42,7 +44,7 @@ function resetGame() {
   gameClear = false;
 }
 
-// 最初の初期化
+// ゲームをリセットして開始
 resetGame();
 
 // キーボードの操作
@@ -160,7 +162,7 @@ function update() {
 // ゲームの描画
 function draw() {
   // 画面をクリア
-  ctx.clearRect(0, 0, 400, 500);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   // プレイヤー
   ctx.fillStyle = "cyan";
@@ -187,19 +189,31 @@ function draw() {
   // ゲームオーバー表示
   if (gameOver) {
     ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
     ctx.font = "40px sans-serif";
-    ctx.fillText("GAME OVER", 90, 230);
+    ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2 - 20);
     ctx.font = "20px sans-serif";
-    ctx.fillText("Press Space to Restart", 95, 270);
+    ctx.fillText(
+      "Press Space to Restart",
+      canvas.width / 2,
+      canvas.height / 2 + 20,
+    );
   }
 
   // クリア表示
   if (gameClear) {
     ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
     ctx.font = "40px sans-serif";
-    ctx.fillText("CLEAR!", 130, 230);
+    ctx.fillText("GAME CLEAR", canvas.width / 2, canvas.height / 2 - 20);
     ctx.font = "20px sans-serif";
-    ctx.fillText("Press Space to Restart", 95, 270);
+    ctx.fillText(
+      "Press Space to Restart",
+      canvas.width / 2,
+      canvas.height / 2 + 20,
+    );
   }
 }
 
