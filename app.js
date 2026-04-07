@@ -18,10 +18,10 @@ let gameClear;
 function createEnemies() {
   let newEnemies = [];
   for (let row = 0; row < 3; row++) {
-    for (let col = 0; col < 5; col++) {
+    for (let col = 0; col < 8; col++) {
       newEnemies.push({
-        x: 50 + col * 60,
-        y: 50 + row * 40,
+        x: 50 + col * 45,
+        y: 50 + row * 35,
         w: 30,
         h: 20,
       });
@@ -32,7 +32,7 @@ function createEnemies() {
 
 // ゲームの初期化
 function resetGame() {
-  player = { x: canvas.width / 2 - 20, y: 450, w: 40, h: 10 };
+  player = { x: canvas.width / 2 - 20, y: canvas.height - 100, w: 40, h: 10 };
   bullet = null;
   enemies = createEnemies();
   enemyDirection = 1;
